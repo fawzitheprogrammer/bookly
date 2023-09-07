@@ -16,6 +16,7 @@ class BooklyRoot extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(393, 851),
       child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: kPrimaryColor,
         ),

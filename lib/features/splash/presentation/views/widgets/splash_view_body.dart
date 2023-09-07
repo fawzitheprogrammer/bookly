@@ -1,6 +1,9 @@
 import 'package:bookly/core/utils/assets.dart';
+import 'package:bookly/features/home/presentation/view/home.dart';
+import 'package:bookly/features/splash/presentation/views/widgets/sliding_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -18,20 +21,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   void initState() {
-    controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
-
-    slideAnimationFromTop = Tween<Offset>(
-      begin: const Offset(0, -2),
-      end: Offset.zero,
-    ).animate(controller);
-    slideAnimationFromBottom =
-        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
-            .animate(controller);
+    initSlidingAnimation();
 
     super.initState();
-
-    controller.forward();
   }
 
   @override
@@ -69,33 +61,27 @@ class _SplashViewBodyState extends State<SplashViewBody>
       ),
     );
   }
-}
 
-class SlidingAnimation extends StatelessWidget {
-  const SlidingAnimation({
-    super.key,
-    required this.slideAnimationFromBottom,
-    required this.child,
-    required this.controller,
-  });
+  void initSlidingAnimation() {
+    controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
 
-  final Animation<Offset> slideAnimationFromBottom;
-  final Widget child;
-  final AnimationController controller;
+    slideAnimationFromTop = Tween<Offset>(
+      begin: const Offset(0, -2),
+      end: Offset.zero,
+    ).animate(controller);
+    slideAnimationFromBottom =
+        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
+            .animate(controller);
 
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: slideAnimationFromBottom,
-      builder: (context, _) => SlideTransition(
-        position: slideAnimationFromBottom,
-        child: AnimatedOpacity(
-          opacity: controller.value,
+    controller.forward().whenComplete(() {
+      Future.delayed(const Duration(seconds: 2)).then(
+        (value) => Get.to(
+          () => const HomePage(),
           curve: Curves.decelerate,
-          duration: const Duration(seconds: 1),
-          child: child,
+          transition: Transition.cupertino,
         ),
-      ),
-    );
+      );
+    });
   }
 }
