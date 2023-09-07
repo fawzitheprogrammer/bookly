@@ -77,7 +77,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     controller.forward().whenComplete(() {
       Future.delayed(const Duration(seconds: 2)).then(
         (value) => Get.to(
-          () => const HomePage(),
+          () => const HomeView(),
           curve: Curves.decelerate,
           transition: Transition.cupertino,
         ),

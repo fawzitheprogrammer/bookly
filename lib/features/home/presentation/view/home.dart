@@ -1,18 +1,11 @@
+import 'package:bookly/features/home/presentation/view/widget/home_view_body.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Text(
-          'Home Page',
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
-    );
+    return const Scaffold(body: HomeViewBody());
   }
 }
