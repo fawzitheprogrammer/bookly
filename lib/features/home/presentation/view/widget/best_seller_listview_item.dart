@@ -33,11 +33,14 @@ class BestSellerListViewItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Harry Potter and the Goblet of Fire',
-                    style: GoogleFonts.robotoSlab(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w400,
+                  Flexible(
+                    child: Text(
+                      'Harry Potter and the Goblet of Fire',
+                      style: GoogleFonts.robotoSlab(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      overflow: TextOverflow.fade,
                     ),
                   ),
                   Text(

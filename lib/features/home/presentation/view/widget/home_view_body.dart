@@ -16,32 +16,38 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25.0.w, vertical: 30.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomAppBar(),
-            const CustomPageView(),
-            SizedBox(
-              height: 18.h,
+        child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 25.0.w, vertical: 20.h),
+      child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        primary: true,
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            title: const CustomAppBar(),
+          ),
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const CustomPageView(),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 2.w),
+                  child: Text(
+                    'Best Seller',
+                    style: Styles.titleMedium,
+                  ),
+                ),
+                SizedBox(
+                  height: 18.h,
+                ),
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 2.w),
-              child: Text(
-                'Best Seller',
-                style: Styles.titleMedium,
-              ),
-            ),
-            SizedBox(
-              height: 18.h,
-            ),
-            const Expanded(
-              child: BestSellerListView(),
-            )
-          ],
-        ),
+          ),
+          const BestSellerListView(),
+        ],
       ),
-    );
+    ));
   }
 }
