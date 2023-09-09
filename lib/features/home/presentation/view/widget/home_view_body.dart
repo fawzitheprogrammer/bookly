@@ -1,4 +1,5 @@
 import 'package:bookly/core/text_styles.dart';
+import 'package:bookly/features/home/presentation/view/widget/best_seller_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'custom_appbar.dart';
@@ -31,6 +32,12 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 'Best Seller',
                 style: Styles.titleMedium,
               ),
+            ),
+            SizedBox(
+              height: 18.h,
+            ),
+            const Expanded(
+              child: BestSellerListView(),
             )
           ],
         ),
