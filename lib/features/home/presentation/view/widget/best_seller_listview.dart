@@ -1,4 +1,6 @@
+import 'package:bookly/core/utils/app_route.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'best_seller_listview_item.dart';
 
@@ -17,10 +19,13 @@ class BestSellerListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList.builder(
-     
       itemCount: 10,
-     
-      itemBuilder: (context, index) => const BestSellerListViewItem(),
+      itemBuilder: (context, index) => GestureDetector(
+        onTap: () {
+          GoRouter.of(context).push(AppRoute.kBookteailsView);
+        },
+        child: const BestSellerListViewItem(),
+      ),
     );
   }
 }
