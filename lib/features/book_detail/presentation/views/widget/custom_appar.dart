@@ -11,7 +11,9 @@ class BookDetailCustomAppBar extends StatelessWidget {
     return Row(
       children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pop(context);
+          },
           child: SvgPicture.asset(
             Assets.kClose,
           ),
