@@ -13,36 +13,40 @@ class BookDetailPriceAndFreePreView extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        BookDetailCustomButton(
-          text: Text(
-            '19.99€',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.montserrat(
-              color: Colors.black87,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w900,
+        Expanded(
+          child: BookDetailCustomButton(
+            text: Text(
+              '19.99€',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.montserrat(
+                color: Colors.black87,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w900,
+              ),
             ),
-          ),
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(15.r),
-            bottomLeft: Radius.circular(15.r),
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15.r),
+              bottomLeft: Radius.circular(15.r),
+            ),
           ),
         ),
-        BookDetailCustomButton(
-          text: Text(
-            'Free preview',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.montserrat(
-              color: Colors.white,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w600,
+        Expanded(
+          child: BookDetailCustomButton(
+            text: Text(
+              'Free preview',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.montserrat(
+                color: Colors.white,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
-          color: const Color(0xFFEF8262),
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(15.r),
-            bottomRight: Radius.circular(15.r),
+            color: const Color(0xFFEF8262),
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(15.r),
+              bottomRight: Radius.circular(15.r),
+            ),
           ),
         ),
       ],

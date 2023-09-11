@@ -17,7 +17,6 @@ class BookDetailCustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      width: 150.w,
       height: 48.h,
       decoration: ShapeDecoration(
         color: color,
