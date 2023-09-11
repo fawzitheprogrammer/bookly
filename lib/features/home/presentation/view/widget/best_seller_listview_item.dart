@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../core/utils/assets.dart';
 
-class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key});
+class BookListView extends StatelessWidget {
+  const BookListView({super.key});
 
   @override
   Widget build(BuildContext context) {

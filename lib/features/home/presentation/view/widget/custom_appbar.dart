@@ -1,6 +1,8 @@
+import 'package:bookly/core/utils/app_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/assets.dart';
 
@@ -17,7 +19,9 @@ class CustomAppBar extends StatelessWidget {
         ),
         const Spacer(),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRoute.kSearch);
+          },
           child: SvgPicture.asset(
             Assets.kSearchIcon,
           ),
