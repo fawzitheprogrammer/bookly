@@ -1,26 +1,48 @@
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/features/book_detail/presentation/views/widget/custom_appar.dart';
 import 'package:bookly/features/book_detail/presentation/views/widget/more_books_listview.dart';
 import 'package:bookly/features/book_detail/presentation/views/widget/price_and_free_preview.dart';
 import 'package:bookly/features/book_detail/presentation/views/widget/title_and_author.dart';
+import 'package:bookly/features/home/data/model/book_model/book_model.dart';
+import 'package:bookly/features/home/manager/cubit/similar_books/similar_books_cubit.dart';
 import 'package:bookly/features/home/presentation/view/widget/rating_widget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/text_styles.dart';
 
-class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key});
+class BookDetailsView extends StatefulWidget {
+  const BookDetailsView({super.key, required this.bookModel});
+
+  final BookModel bookModel;
+
+  @override
+  State<BookDetailsView> createState() => _BookDetailsViewState();
+}
+
+class _BookDetailsViewState extends State<BookDetailsView> {
+  @override
+  void initState() {
+    BlocProvider.of<SimilarBooksCubit>(context)
+        .getSimilarBooks(widget.bookModel.volumeInfo.categories![0]);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(child: BookViewBody()),
+    return Scaffold(
+      body: SafeArea(
+          child: BookViewBody(
+        bookModel: widget.bookModel,
+      )),
     );
   }
 }
 
 class BookViewBody extends StatelessWidget {
-  const BookViewBody({super.key});
+  const BookViewBody({super.key, required this.bookModel});
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +55,8 @@ class BookViewBody extends StatelessWidget {
             const BookDetailCustomAppBar(),
             ClipRRect(
               borderRadius: BorderRadius.circular(20.r),
-              child: Image.asset(
-                Assets.kBooks,
+              child: CachedNetworkImage(
+                imageUrl: bookModel.volumeInfo.imageLinks.thumbnail,
                 width: 162.w,
                 height: 243.h,
                 fit: BoxFit.cover,
@@ -43,15 +65,22 @@ class BookViewBody extends StatelessWidget {
             SizedBox(
               height: 40.h,
             ),
-            const BooksDetailTitleAndAuthor(),
+            BooksDetailTitleAndAuthor(
+              bookModel: bookModel,
+            ),
             SizedBox(
               height: 18.h,
             ),
-            const RatingWidget(),
+            RatingWidget(
+              rating: bookModel.volumeInfo.ratingsCount?.toInt() ?? 0,
+              raingCount: bookModel.volumeInfo.averageRating?.toInt() ?? 0,
+            ),
             SizedBox(
               height: 28.h,
             ),
-            const BookDetailPriceAndFreePreView(),
+            BookDetailPriceAndFreePreView(
+              bookModel: bookModel,
+            ),
             SizedBox(
               height: 40.h,
             ),
@@ -71,7 +100,9 @@ class BookViewBody extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            const BooksDetailsMoreBooksListView()
+            BooksDetailsMoreBooksListView(
+              bookModel: bookModel,
+            )
           ],
         ),
       ),

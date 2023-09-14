@@ -1,3 +1,4 @@
+import 'package:bookly/features/home/data/model/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,7 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 class BooksDetailTitleAndAuthor extends StatelessWidget {
   const BooksDetailTitleAndAuthor({
     super.key,
+    required this.bookModel,
   });
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class BooksDetailTitleAndAuthor extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'The Jungle Book',
+          bookModel.volumeInfo.title!,
           style: GoogleFonts.robotoSlab(
             fontSize: 28.sp,
             fontWeight: FontWeight.w400,
@@ -25,7 +28,7 @@ class BooksDetailTitleAndAuthor extends StatelessWidget {
           height: 8.h,
         ),
         Text(
-          'Rudyard Kipling',
+          bookModel.volumeInfo.authors![0],
           style: GoogleFonts.montserrat(
             fontSize: 16.sp,
             fontWeight: FontWeight.w500,

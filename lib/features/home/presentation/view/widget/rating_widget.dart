@@ -4,7 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RatingWidget extends StatelessWidget {
-  const RatingWidget({super.key});
+  const RatingWidget(
+      {super.key, required this.rating, required this.raingCount});
+
+  final int rating;
+  final int raingCount;
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +22,11 @@ class RatingWidget extends StatelessWidget {
         ),
         RichText(
           text: TextSpan(
-            text: '4.8',
+            text: rating.toStringAsFixed(1),
             style: Styles.montserratNormal,
             children: [
               TextSpan(
-                text: '(2390)',
+                text: '($raingCount)',
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w400,
                   color: Colors.grey,

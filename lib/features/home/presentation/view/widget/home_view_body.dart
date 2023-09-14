@@ -23,6 +23,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
         primary: true,
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             pinned: true,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             title: const CustomAppBar(),
@@ -45,7 +46,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               ],
             ),
           ),
-          const BestSellerListView(),
+          const SliverToBoxAdapter(
+            child: BestSellerListView(),
+          ),
         ],
       ),
     ));

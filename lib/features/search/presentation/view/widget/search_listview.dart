@@ -15,7 +15,14 @@ class SearchResultListView extends StatelessWidget {
         onTap: () {
           GoRouter.of(context).push(AppRoute.kBookteailsView);
         },
-        child: const BookListView(),
+        child: const BookListView(
+          bookAuthor: '',
+          bookImg: '',
+          bookName: '',
+          rating: 0,
+          price: '',
+          ratingCount: 0,
+        ),
       ),
     );
   }
