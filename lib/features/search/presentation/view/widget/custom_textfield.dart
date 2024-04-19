@@ -1,4 +1,6 @@
+import 'package:bookly/features/search/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -29,6 +31,9 @@ class CustomSearchTextField extends StatelessWidget {
         ),
       ),
       cursorColor: Colors.white,
+      onChanged: (value) {
+        BlocProvider.of<SearchCubit>(context).searchForBook(value);
+      },
     );
   }
 }

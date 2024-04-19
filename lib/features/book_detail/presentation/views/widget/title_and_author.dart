@@ -28,7 +28,7 @@ class BooksDetailTitleAndAuthor extends StatelessWidget {
           height: 8.h,
         ),
         Text(
-          bookModel.volumeInfo.authors![0],
+          bookModel.volumeInfo.authors?[0]??'No title',
           style: GoogleFonts.montserrat(
             fontSize: 16.sp,
             fontWeight: FontWeight.w500,

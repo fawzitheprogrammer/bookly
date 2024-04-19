@@ -5,9 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/text_styles.dart';
 import 'custom_textfield.dart';
 
-class SearchViewBody extends StatelessWidget {
+class SearchViewBody extends StatefulWidget {
   const SearchViewBody({super.key});
 
+  @override
+  State<SearchViewBody> createState() => _SearchViewBodyState();
+}
+
+class _SearchViewBodyState extends State<SearchViewBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

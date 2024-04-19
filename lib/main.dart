@@ -2,9 +2,11 @@ import 'package:bookly/constants.dart';
 import 'package:bookly/core/service_locator.dart';
 import 'package:bookly/core/utils/app_route.dart';
 import 'package:bookly/features/home/data/repo/home_repo_implement.dart';
+import 'package:bookly/features/home/data/repo/search_repo_implement.dart';
 import 'package:bookly/features/home/manager/cubit/featured_books_cubit/featured_book_cubit.dart';
 import 'package:bookly/features/home/manager/cubit/newest_books_cubit/newest_books_cubit.dart';
 import 'package:bookly/features/home/manager/cubit/similar_books/similar_books_cubit.dart';
+import 'package:bookly/features/search/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,6 +37,11 @@ class BooklyRoot extends StatelessWidget {
         BlocProvider(
           create: (context) => SimilarBooksCubit(
             getIt.get<HomeRepoImplement>(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => SearchCubit(
+            getIt.get<SearchRepoImplement>(),
           ),
         ),
       ],
